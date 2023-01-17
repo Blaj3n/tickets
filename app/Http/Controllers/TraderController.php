@@ -36,4 +36,18 @@ class TraderController extends Controller
         $Trader->description = $request->description;
         $Trader->save();
     }
+    public function traderBetu($betu)
+    {
+        $traders=DB::table("traders as t")
+        ->select("name")
+        ->where("name", "like", "%".$betu."%")
+        ->get();
+        return $traders;
+    }
+    public function traderDb()
+    {
+        $traders=DB::table("traders as t")
+        ->count("trade_id");
+        return $traders;
+    }
 }
