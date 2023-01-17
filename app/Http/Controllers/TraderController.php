@@ -36,6 +36,22 @@ class TraderController extends Controller
         $Trader->description = $request->description;
         $Trader->save();
     }
+    public function newView()
+    {
+        $users = User::all();
+        return view('trader.new', ['users' => $users]);
+    }
+    public function editView($id)
+    {
+        $users = User::all();
+        $trader = Trader::find($id);
+        return view('trader.edit', ['users' => $users, 'event' => $trader]);
+    }
+    public function listView(){
+        $traders = Trader::all();
+        return view('event.list', ['traders' => $traders]);
+    }
+    
     public function traderBetu($betu)
     {
         $traders=DB::table("traders as t")

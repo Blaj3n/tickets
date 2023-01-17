@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -38,5 +39,20 @@ class TicketController extends Controller
         $Ticket->user_id = $request->user_id;
         $Ticket->status = $request->status;
         $Ticket->save();
+    }
+    public function newView()
+    {
+        $users = User::all();
+        return view('ticket.new', ['users' => $users]);
+    }
+    public function editView($id)
+    {
+        $users = User::all();
+        $ticket = Ticket::find($id);
+        return view('ticket.edit', ['users' => $users, 'ticket' => $ticket]);
+    }
+    public function listView(){
+        $tickets = Ticket::all();
+        return view('ticket.list', ['tickets' => $tickets]);
     }
 }

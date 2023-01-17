@@ -40,4 +40,19 @@ class EventController extends Controller
         $Event->status = $request->status;
         $Event->save();
     }
+    public function newView()
+    {
+        $users = User::all();
+        return view('event.new', ['users' => $users]);
+    }
+    public function editView($id)
+    {
+        $users = User::all();
+        $event = Event::find($id);
+        return view('event.edit', ['users' => $users, 'event' => $event]);
+    }
+    public function listView(){
+        $events = Ticket::all();
+        return view('event.list', ['events' => $events]);
+    }
 }
