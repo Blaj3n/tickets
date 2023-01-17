@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trader extends Model
 {
+    protected $primaryKey="trade_id";
     use HasFactory;
+    protected $fillable = [
+        "name",
+        "description"
+    ];
 }

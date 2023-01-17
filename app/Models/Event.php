@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    protected $primaryKey="event_id";
     use HasFactory;
+    protected $fillable = [
+        "date",
+        "max_number",
+        "trade_id",
+        "status"
+    ];
 }
